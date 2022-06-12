@@ -1,16 +1,17 @@
-import {request, response, Router} from  'express';
+import { Router } from "express";
+import messageController from "../controller/messageController";
 
-class IndexRoutes{
-    public router: Router;
+class IndexRoutes {
+  public router: Router;
 
-        constructor(){
-            this.router = Router();
-        }
+  constructor() {
+    this.router = Router();
+  }
 
-        routes(){
-            this.router.get('/',(req,res)=> res.send('Home 2'));
-        } 
-
+  routes() {
+    this.router.get("/message/:id", messageController.sendMessage);
+    this.router.post("/message", messageController.saveMessage);
+  }
 }
 
 const indexRoutes = new IndexRoutes();
