@@ -1,0 +1,32 @@
+{
+  "name": "view-once-api",
+  "version": "1.0.0",
+  "description": "App use to save messages to be shared and used once time by any user with generated link",
+  "main": "server.js",
+  "scripts": {
+    "ts": "tsc -w",
+    "dev": "ts-node-dev --respawn src/server.ts",
+    "start": "tsc && node ./build/server.js"
+  },
+  "keywords": [
+    "encryptation"
+  ],
+  "author": "Surialpha, Muchis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.18.1",
+    "helmet": "5.1.0",
+    "install": "^0.13.0",
+    "morgan": "1.10.0",
+    "npm": "^8.12.1",
+    "redis": "4.1.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "4.7.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.13",
+    "@types/morgan": "1.9.3",
+    "@types/node": "17.0.42"
+  }
+}
