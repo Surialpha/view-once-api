@@ -1,25 +1,21 @@
-import {Request, Response} from  'express';
-import messageService from '../services/messageService'
+import { Request, Response } from "express";
+import { ResponseModel } from "../models/responseModel";
+import messageService from "../services/messageService";
 
-class MessageController{
+class MessageController {
+  public saveMessage(req: Request, res: Response) {
+    const value = req.body["message"];
+    const response: ResponseModel = messageService.saveMessage(value);
+    res.status(response.status).json(response.body);
+  }
 
-
-        public saveMessage(req: Request, res: Response){
-            
-            const message = req.body.message;
-            
-            return res.send(messageService.saveMessage(message));
-        }
-
-        public sendMessage(req: Request, res: Response){
-            const id = req.params['id']
-            return res.send(messageService.sendMessage(id))
-        }
-
-
+  public sendMessage(req: Request, res: Response) {
+    const id = req.params["id"];
+    const response: ResponseModel = messageService.sendMessage(id);
+    res.status(response.status).json(response.body);
+  }
 }
 
 const messageController = new MessageController();
-
 
 export default messageController;
