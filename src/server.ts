@@ -1,37 +1,36 @@
-import express from 'express';
-import morgan from 'morgan';
-import helmet from 'helmet';
+import express, { Request, Response } from "express";
+import morgan from "morgan";
+import helmet from "helmet";
 
-import IndexRoutes from './routes/indexRoutes'
+import IndexRoutes from "./routes/indexRoutes";
 
-class Server{
+class Server {
+  public app: express.Application;
+  public redisClient: any;
 
-    public app: express.Application;
+  constructor() {
+    this.app = express();
+    this.config();
+    this.routes();
+  }
 
-    constructor(){
-        this.app = express();
-        this.config();
-        this.routes();
-    }
+  config() {
+    this.app.set("port", process.env.PORT || 9669);
+    //Middelwares
+    this.app.use(morgan("dev"));
+    this.app.use(helmet());
+    this.app.use(express.json());
+  }
 
-    config(){
-        this.app.set('port', process.env.PORT || 9669);
-        //Middelwares
-        this.app.use(morgan('dev'));
-        this.app.use(helmet());
-        this.app.use(express.json())
-    }
+  routes() {
+    this.app.use(IndexRoutes);
+  }
 
-    routes(){
-        this.app.use(IndexRoutes);
-    }
-
-    start(){
-        this.app.listen(this.app.get('port'), ()=>{
-            console.log('Server on port',this.app.get('port'))
-        })
-    }
-
+  async start() {
+    this.app.listen(this.app.get("port"), () => {
+      console.log("Server on port", this.app.get("port"));
+    });
+  }
 }
 
 const server = new Server();
