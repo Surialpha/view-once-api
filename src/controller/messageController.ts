@@ -5,7 +5,10 @@ class MessageController{
 
 
         public saveMessage(req: Request, res: Response){
-            return res.send(messageService.saveMessage())
+            
+            const message = req.body.message;
+            
+            return res.send(messageService.saveMessage(message));
         }
 
         public sendMessage(req: Request, res: Response){
