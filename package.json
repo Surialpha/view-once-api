@@ -6,7 +6,7 @@
   "scripts": {
     "ts": "tsc -w",
     "dev": "ts-node-dev --respawn src/server.ts",
-    "start": "node ./build/server.js",
+    "start": "node build/server.js",
     "postinstall": "tsc"
   },
   "keywords": [
