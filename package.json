@@ -6,7 +6,8 @@
   "scripts": {
     "ts": "tsc -w",
     "dev": "ts-node-dev --respawn src/server.ts",
-    "start": "tsc && node ./build/server.js"
+    "start": "node ./build/server.js",
+    "postinstall": "tsc"
   },
   "keywords": [
     "encryptation"
