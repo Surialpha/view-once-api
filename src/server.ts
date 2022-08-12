@@ -5,7 +5,7 @@ import helmet from "helmet";
 import IndexRoutes from "./routes/indexRoutes";
 import corsConfig from "./shared/config/corsConfig";
 
-class Server {
+export default class Server {
   public app: express.Application;
   public redisClient: any;
 
@@ -36,4 +36,5 @@ class Server {
 }
 
 const server = new Server();
+
 server.start();
