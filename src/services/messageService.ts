@@ -49,13 +49,9 @@ class MessageService {
 
       const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
 
-      const message = storeObj
-        ? decryptedData
-        : this.API_LABELS_CONST.SendMessage.notAMessage;
-
       response = {
         status: status,
-        body: { message },
+        body: { message: decryptedData },
       };
       return response;
     } catch (error) {
